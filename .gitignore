@@ -1,0 +1,7 @@
+bin/
+assets/
+analyzerData/
+doc/
+*.dll
+error.log
+lib/
