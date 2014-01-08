@@ -26,28 +26,35 @@ public class Blinkable implements Tickable {
     }
 
     private BlinkFrequency frequency;
-    private Spatial spartial;
+    private Spatial spatial;
     private int counter = 0;
 
     public Blinkable(Spatial spatial, BlinkFrequency blinkFrequency) {
         this.frequency = blinkFrequency;
-        this.spartial = spatial;
-        spartial.setCullHint(CullHint.Never);
+        this.spatial = spatial;
+        spatial.setCullHint(CullHint.Never);
     }
 
-    public void update() {
+    @Override
+    public boolean update() {
         if (++counter == frequency.getFrequency()) {
             swapViewable();
             counter = 0;
         }
+        return true;
     }
 
-    private void swapViewable() {
-        if (spartial.getCullHint().equals(CullHint.Never)) {
-            spartial.setCullHint(CullHint.Always);
+    protected void swapViewable() {
+        if (spatial.getCullHint().equals(CullHint.Never)) {
+            spatial.setCullHint(CullHint.Always);
         } else {
-            spartial.setCullHint(CullHint.Never);
+            spatial.setCullHint(CullHint.Never);
         }
+    }
+
+    @Override
+    public Spatial getSpatial() {
+        return spatial;
     }
 
 }

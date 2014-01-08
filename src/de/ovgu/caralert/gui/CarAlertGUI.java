@@ -1,6 +1,7 @@
 package de.ovgu.caralert.gui;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.jme3.font.BitmapFont;
@@ -34,6 +35,7 @@ public class CarAlertGUI {
 
     private void createGuis(Simulator simulator) {
         addTestBlinkables(simulator);
+        addTestLimitedBlinkables(simulator);
     }
 
     private void addTestBlinkables(Simulator simulator) {
@@ -83,14 +85,34 @@ public class CarAlertGUI {
         addBlinkable(warnIcon5, BlinkFrequency.VERY_FAST);
     }
 
+    private void addTestLimitedBlinkables(Simulator simulator) {
+        AppSettings settings = simulator.getSettings();
+
+        Picture warnIcon = new Picture("VeryFastWarndreick");
+        warnIcon.setImage(simulator.getAssetManager(), "CarAlert/Textures/Warndreieck.png", true);
+        warnIcon.setHeight(50);
+        warnIcon.setWidth(50);
+        warnIcon.setPosition((settings.getWidth() / 2) - 25, settings.getHeight() - 125);
+        guiNode.attachChild(warnIcon);
+        tickables.add(new LimitedBlinkable(warnIcon, BlinkFrequency.NORMAL, 5));
+    }
+
     private void addBlinkable(Spatial spatial, BlinkFrequency frequency) {
         tickables.add(new Blinkable(spatial, frequency));
     }
 
     public void update() {
+        // Update all tickables
+        Iterator<Tickable> iter = tickables.iterator();
 
-        for (Tickable tickable : tickables) {
-            tickable.update();
+        while (iter.hasNext()) {
+            Tickable tickable = iter.next();
+            // Tickable is outdated or error happend
+            if (!tickable.update()) {
+                // remove from gui and tick list
+                iter.remove();
+                guiNode.detachChild(tickable.getSpatial());
+            }
         }
     }
 
