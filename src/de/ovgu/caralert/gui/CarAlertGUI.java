@@ -36,6 +36,7 @@ public class CarAlertGUI {
     private void createGuis(Simulator simulator) {
         addTestBlinkables(simulator);
         addTestLimitedBlinkables(simulator);
+        addTestTimeLimitedBlinkables(simulator);
     }
 
     private void addTestBlinkables(Simulator simulator) {
@@ -92,9 +93,21 @@ public class CarAlertGUI {
         warnIcon.setImage(simulator.getAssetManager(), "CarAlert/Textures/Warndreieck.png", true);
         warnIcon.setHeight(50);
         warnIcon.setWidth(50);
-        warnIcon.setPosition((settings.getWidth() / 2) - 25, settings.getHeight() - 125);
+        warnIcon.setPosition((settings.getWidth() / 2) - 25, settings.getHeight() - 110);
         guiNode.attachChild(warnIcon);
         tickables.add(new LimitedBlinkable(warnIcon, BlinkFrequency.NORMAL, 5));
+    }
+
+    private void addTestTimeLimitedBlinkables(Simulator simulator) {
+        AppSettings settings = simulator.getSettings();
+
+        Picture warnIcon = new Picture("VeryFastWarndreick");
+        warnIcon.setImage(simulator.getAssetManager(), "CarAlert/Textures/Warndreieck.png", true);
+        warnIcon.setHeight(50);
+        warnIcon.setWidth(50);
+        warnIcon.setPosition((settings.getWidth() / 2) - 25, settings.getHeight() - 170);
+        guiNode.attachChild(warnIcon);
+        tickables.add(new TimeLimitBlinkable(warnIcon, BlinkFrequency.NORMAL, 10000L));
     }
 
     private void addBlinkable(Spatial spatial, BlinkFrequency frequency) {
