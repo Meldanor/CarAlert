@@ -33,6 +33,7 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial.CullHint;
 import com.jme3.ui.Picture;
 
+import de.ovgu.caralert.gui.CarAlertGUI;
 import eu.opends.car.Car;
 import eu.opends.drivingTask.settings.SettingsLoader;
 import eu.opends.drivingTask.settings.SettingsLoader.Setting;
@@ -53,6 +54,8 @@ public class PanelCenter
 	private static BitmapText reverseText, neutralText, manualText, driveText, currentGearText, odometerText;	
 	private static BitmapText speedText, mileageText, markerText, storeText, deviationText, engineSpeedText, gearText;
 	private static BitmapText fuelConsumptionPer100KmText, fuelConsumptionPerHourText, totalFuelConsumptionText;
+	
+	private static CarAlertGUI carAlertGUI;
 	
 	// message box
 	private static MessageBoxGUI messageBoxGUI;
@@ -302,6 +305,8 @@ public class PanelCenter
         	guiNode.attachChild(entry.getValue());
         
 		resetPanelPosition(true);
+		
+		carAlertGUI = new CarAlertGUI(simulator);
 	}
 	
 	

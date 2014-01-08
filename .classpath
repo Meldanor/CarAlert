@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.18-bin.jar"/>
 	<classpathentry kind="lib" path="lib/CarOntology.jar"/>
 	<classpathentry kind="lib" path="lib/KAPcomConnector.jar"/>
@@ -70,16 +70,56 @@
 	<classpathentry kind="lib" path="lib/jME3/lib/j-ogg-vorbisd.jar"/>
 	<classpathentry kind="lib" path="lib/jME3/lib/jbullet.jar"/>
 	<classpathentry kind="lib" path="lib/jME3/lib/jinput.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-blender.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-desktop.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-jbullet.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-jogg.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-lwjgl-natives.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-lwjgl.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-niftygui.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-plugins.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-terrain.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-testdata.jar"/>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-blender.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-desktop.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-jbullet.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-jogg.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-lwjgl-natives.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-lwjgl.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-niftygui.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-plugins.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-terrain.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-testdata.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/jME3/lib/lwjgl.jar"/>
 	<classpathentry kind="lib" path="lib/jME3/lib/nifty-default-controls.jar"/>
 	<classpathentry kind="lib" path="lib/jME3/lib/nifty-examples.jar"/>
@@ -89,8 +129,16 @@
 	<classpathentry kind="lib" path="lib/jME3/lib/stack-alloc.jar"/>
 	<classpathentry kind="lib" path="lib/jME3/lib/vecmath.jar"/>
 	<classpathentry kind="lib" path="lib/jME3/lib/xmlpull-xpp3.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/jMonkeyEngine3.jar"/>
+	<classpathentry kind="lib" path="lib/jME3/jMonkeyEngine3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/contre.jar"/>
-	<classpathentry kind="lib" path="lib/jME3/lib/jME3-core.jar"/>
+	<classpathentry kind="lib" path="lib/jME3/lib/jME3-core.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://hub.jmonkeyengine.org/javadoc/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
