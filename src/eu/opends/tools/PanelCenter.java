@@ -401,6 +401,8 @@ public class PanelCenter
 			
 			resolutionHasChanged = false;
 		}
+		
+		carAlertGUI.update();
 	}
 	
 	
