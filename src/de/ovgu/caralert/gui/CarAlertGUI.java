@@ -114,14 +114,26 @@ public class CarAlertGUI {
         tickables.add(new Blinkable(spatial, frequency));
     }
 
+    private long lastTimestamp = 0;
+
     public void update() {
+        // Initial round
+        if (lastTimestamp == 0) {
+            lastTimestamp = System.currentTimeMillis();
+            return;
+        }
+
+        long cur = System.currentTimeMillis();
+        long diff = cur - lastTimestamp;
+        lastTimestamp = cur;
+
         // Update all tickables
         Iterator<Tickable> iter = tickables.iterator();
 
         while (iter.hasNext()) {
             Tickable tickable = iter.next();
             // Tickable is outdated or error happend
-            if (!tickable.update()) {
+            if (!tickable.update(diff)) {
                 // remove from gui and tick list
                 iter.remove();
                 guiNode.detachChild(tickable.getSpatial());

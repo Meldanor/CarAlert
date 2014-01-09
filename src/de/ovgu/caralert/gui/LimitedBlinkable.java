@@ -15,8 +15,8 @@ public class LimitedBlinkable extends Blinkable {
     }
 
     @Override
-    public boolean update() {
-        super.update();
+    public boolean update(long diff) {
+        super.update(diff);
         return !vanished;
     }
 

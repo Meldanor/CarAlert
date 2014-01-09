@@ -36,7 +36,7 @@ public class Blinkable implements Tickable {
     }
 
     @Override
-    public boolean update() {
+    public boolean update(long diff) {
         if (++counter == frequency.getFrequency()) {
             swapViewable();
             counter = 0;
