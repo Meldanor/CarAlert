@@ -22,6 +22,7 @@ package eu.opends.main;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -29,7 +30,9 @@ import com.jme3.input.Joystick;
 import com.jme3.math.Vector3f;
 import com.jme3.niftygui.NiftyJmeDisplay;
 import com.jme3.system.AppSettings;
+
 import de.lessvoid.nifty.Nifty;
+import de.ovgu.caralert.CarAlertCore;
 import eu.opends.analyzer.DrivingTaskLogger;
 import eu.opends.analyzer.DataWriter;
 import eu.opends.audio.AudioCenter;
@@ -190,6 +193,10 @@ public class Simulator extends SimulationBasics
 		return outputFolder;
 	}
 	
+	private static CarAlertCore carAlertCore;
+	public static CarAlertCore getCarAlertCore() {
+	    return carAlertCore;
+	}
 	
     @Override
     public void simpleInitApp()
@@ -340,6 +347,8 @@ public class Simulator extends SimulationBasics
 			settingsControllerServer.start();
 		}
 		
+		carAlertCore = new CarAlertCore(this);
+		
 		initializationFinished = true;
     }
 
@@ -423,6 +432,8 @@ public class Simulator extends SimulationBasics
 				instructionScreenGUI.showDialog(instructionScreenID);
 				instructionScreenID = null;
 			}
+			
+			carAlertCore.update();
     	}
     }
 
