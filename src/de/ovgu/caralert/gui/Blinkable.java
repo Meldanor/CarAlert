@@ -3,7 +3,7 @@ package de.ovgu.caralert.gui;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.Spatial.CullHint;
 
-public class Blinkable implements Tickable {
+public class Blinkable implements GUITickable {
 
     public enum BlinkFrequency {
         //@formatter:off

@@ -20,7 +20,7 @@ public class CarAlertGUI {
 
     private static String DEFAULT_FONT = "Interface/Fonts/Default.fnt";
 
-    private List<Tickable> tickables;
+    private List<GUITickable> tickables;
 
     public CarAlertGUI(Simulator simulation) {
         this.guiNode = simulation.getGuiNode();
@@ -28,7 +28,7 @@ public class CarAlertGUI {
         if (font == null)
             System.out.println("Can't find the font");
 
-        this.tickables = new ArrayList<Tickable>();
+        this.tickables = new ArrayList<GUITickable>();
 
         createGuis(simulation);
     }
@@ -128,10 +128,10 @@ public class CarAlertGUI {
         lastTimestamp = cur;
 
         // Update all tickables
-        Iterator<Tickable> iter = tickables.iterator();
+        Iterator<GUITickable> iter = tickables.iterator();
 
         while (iter.hasNext()) {
-            Tickable tickable = iter.next();
+            GUITickable tickable = iter.next();
             // Tickable is outdated or error happend
             if (!tickable.update(diff)) {
                 // remove from gui and tick list

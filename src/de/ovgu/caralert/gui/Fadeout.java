@@ -2,7 +2,7 @@ package de.ovgu.caralert.gui;
 
 import com.jme3.scene.Spatial;
 
-public class Fadeout implements Tickable {
+public class Fadeout implements GUITickable {
 
     private long visibleTime;
 
