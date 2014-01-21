@@ -1,6 +1,7 @@
 package de.ovgu.caralert.gui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,20 +24,21 @@ public class CarAlertGUI {
     private List<GUITickable> tickables;
 
     public CarAlertGUI(Simulator simulation) {
+
         this.guiNode = simulation.getGuiNode();
         this.font = simulation.getAssetManager().loadFont(DEFAULT_FONT);
         if (font == null)
             System.out.println("Can't find the font");
 
-        this.tickables = new ArrayList<GUITickable>();
+        this.tickables = Collections.synchronizedList(new ArrayList<GUITickable>());
 
         createGuis(simulation);
     }
 
     private void createGuis(Simulator simulator) {
-        addTestBlinkables(simulator);
-        addTestLimitedBlinkables(simulator);
-        addTestTimeLimitedBlinkables(simulator);
+//        addTestBlinkables(simulator);
+//        addTestLimitedBlinkables(simulator);
+//        addTestTimeLimitedBlinkables(simulator);
     }
 
     private void addTestBlinkables(Simulator simulator) {
@@ -127,18 +129,30 @@ public class CarAlertGUI {
         long diff = cur - lastTimestamp;
         lastTimestamp = cur;
 
-        // Update all tickables
-        Iterator<GUITickable> iter = tickables.iterator();
+        synchronized (tickables) {
+            // Update all tickables
+            Iterator<GUITickable> iter = tickables.iterator();
 
-        while (iter.hasNext()) {
-            GUITickable tickable = iter.next();
-            // Tickable is outdated or error happend
-            if (!tickable.update(diff)) {
-                // remove from gui and tick list
-                iter.remove();
-                guiNode.detachChild(tickable.getSpatial());
+            while (iter.hasNext()) {
+                GUITickable tickable = iter.next();
+                // Tickable is outdated or error happend
+                if (!tickable.update(diff)) {
+                    // remove from gui and tick list
+                    iter.remove();
+                    guiNode.detachChild(tickable.getSpatial());
+                }
             }
         }
+
+    }
+
+    public void add(GUITickable tickable) {
+        this.guiNode.attachChild(tickable.getSpatial());
+        this.tickables.add(tickable);
+    }
+
+    public BitmapFont getFont() {
+        return font;
     }
 
 }

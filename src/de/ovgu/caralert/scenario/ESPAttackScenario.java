@@ -35,7 +35,7 @@ public class ESPAttackScenario extends AbstractScenario {
 		}
 	}
 
-	private static final float SPEED_LIMIT = 200.0f;
+	private static final float SPEED_LIMIT = 80.0f;
 
 	private boolean reachedSpeedLimit() {
 		return getCore().getSimulator().getCar().getCurrentSpeedKmh() < SPEED_LIMIT;
@@ -43,25 +43,24 @@ public class ESPAttackScenario extends AbstractScenario {
 
 	@Override
 	public void onNoRisk() {
-		// TODO Auto-generated method stub
-
+		System.out.println("keine gefahr");
 	}
 
 	@Override
 	public void onLowRisk() {
-		// TODO Auto-generated method stub
+		System.out.println("geringe gefahr");
 
 	}
 
 	@Override
 	public void onHighRisk() {
-		// TODO Auto-generated method stub
+		System.out.println("hohe gefahr");
 
 	}
 
 	@Override
 	public void onSevereRisk() {
-		// TODO Auto-generated method stub
+		System.out.println("sehr hohe gefahr");
 
 	}
 

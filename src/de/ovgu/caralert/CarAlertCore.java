@@ -16,60 +16,83 @@ import de.ovgu.caralert.factor.TrafficIntensityFactor;
 import de.ovgu.caralert.factor.VolumneFactor;
 import de.ovgu.caralert.factor.WeatherFactor;
 import de.ovgu.caralert.gui.CarAlertGUI;
+import de.ovgu.caralert.scenario.AbstractScenario;
+import de.ovgu.caralert.scenario.AirConditionerFailureScenario;
 import eu.opends.main.Simulator;
 
 public class CarAlertCore {
 
-	private Simulator simulator;
+    private Simulator simulator;
 
-	private CarAlertGUI carAlertGUI;
+    private CarAlertGUI carAlertGUI;
 
-	private FactorAnalyzer factorAnalyzer;
+    private FactorAnalyzer factorAnalyzer;
 
-	public CarAlertCore(Simulator simulator) {
-		this.simulator = simulator;
+    private AbstractScenario scenario;
 
-		this.factorAnalyzer = new SimpleFactorAnalyzer();
-		addFactors();
+    public CarAlertCore(Simulator simulator) {
+        this.simulator = simulator;
 
-		this.carAlertGUI = new CarAlertGUI(simulator);
-		init();
-	}
+        this.factorAnalyzer = new SimpleFactorAnalyzer();
+        addFactors();
 
-	private void init() {
+        this.carAlertGUI = new CarAlertGUI(simulator);
+        init();
+    }
 
-	}
+    private void init() {
+        this.scenario = new AirConditionerFailureScenario(this);
+    }
 
-	public void update() {
+    private long lastTimestamp = 0;
 
-		this.carAlertGUI.update();
+    public void update() {
+        // Initial round
+        if (lastTimestamp == 0) {
+            lastTimestamp = System.currentTimeMillis();
+            return;
+        }
 
-	}
+        long cur = System.currentTimeMillis();
+        long diff = cur - lastTimestamp;
+        lastTimestamp = cur;
 
-	public Simulator getSimulator() {
-		return simulator;
-	}
+        this.carAlertGUI.update();
 
-	public FactorAnalyzer getFactorAnalyzer() {
-		return factorAnalyzer;
-	}
+        if (scenario != null && !this.scenario.update(diff)) {
+            this.scenario = null;
+        }
 
-	private void addFactors() {
-		this.factorAnalyzer.registerFactor(new BrightnessFactor());
-		this.factorAnalyzer.registerFactor(new CarClassFactor());
-		this.factorAnalyzer.registerFactor(new CarStateFactor());
-		this.factorAnalyzer.registerFactor(new DriverConditionFactor());
-		this.factorAnalyzer.registerFactor(new EnvironmentFactor());
-		this.factorAnalyzer.registerFactor(new LoadFactor());
-		this.factorAnalyzer.registerFactor(new PassangerFactor());
-		this.factorAnalyzer.registerFactor(new PlaceKnowledgeFactor());
-		this.factorAnalyzer.registerFactor(new RouteDurationFactor());
-		this.factorAnalyzer.registerFactor(new SignFactor());
-		this.factorAnalyzer.registerFactor(new TemperatureFactor());
-		this.factorAnalyzer.registerFactor(new TimeFactor());
-		this.factorAnalyzer.registerFactor(new TrafficIntensityFactor());
-		this.factorAnalyzer.registerFactor(new VolumneFactor());
-		this.factorAnalyzer.registerFactor(new WeatherFactor());
-	}
+    }
+
+    public Simulator getSimulator() {
+        return simulator;
+    }
+
+    public FactorAnalyzer getFactorAnalyzer() {
+        return factorAnalyzer;
+    }
+
+    public CarAlertGUI getCarAlertGUI() {
+        return carAlertGUI;
+    }
+
+    private void addFactors() {
+        this.factorAnalyzer.registerFactor(new BrightnessFactor());
+        this.factorAnalyzer.registerFactor(new CarClassFactor());
+        this.factorAnalyzer.registerFactor(new CarStateFactor());
+        this.factorAnalyzer.registerFactor(new DriverConditionFactor());
+        this.factorAnalyzer.registerFactor(new EnvironmentFactor());
+        this.factorAnalyzer.registerFactor(new LoadFactor());
+        this.factorAnalyzer.registerFactor(new PassangerFactor());
+        this.factorAnalyzer.registerFactor(new PlaceKnowledgeFactor());
+        this.factorAnalyzer.registerFactor(new RouteDurationFactor());
+        this.factorAnalyzer.registerFactor(new SignFactor());
+        this.factorAnalyzer.registerFactor(new TemperatureFactor());
+        this.factorAnalyzer.registerFactor(new TimeFactor());
+        this.factorAnalyzer.registerFactor(new TrafficIntensityFactor());
+        this.factorAnalyzer.registerFactor(new VolumneFactor());
+        this.factorAnalyzer.registerFactor(new WeatherFactor());
+    }
 
 }

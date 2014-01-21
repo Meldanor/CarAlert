@@ -10,6 +10,7 @@ public class Fadeout implements GUITickable {
 
     public Fadeout(Spatial spatial, long visibleTime) {
         this.visibleTime = visibleTime;
+        this.spatial = spatial;
     }
 
     @Override
