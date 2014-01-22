@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+  <!-- +++++++++++++++++++++++++++++++++++++++ -->
+  <!-- load default styles and controls -->
+  <!-- +++++++++++++++++++++++++++++++++++++++ -->
+  <useStyles filename="nifty-default-styles.xml"/>
+  <useControls filename="nifty-default-controls.xml"/>
+  <style base="button-font" id="console-red">
+    <attributes color="#f00f" font="fonts/menu.fnt"/>
+  </style>
+  <style base="button-font" id="console-white">
+    <attributes color="#ffff" font="fonts/menu.fnt"/>
+  </style>
+  <style id="console-font">
+    <attributes color="#00ff" font="fonts/verdana-48-regular.fnt"/>
+  </style>
+
+	
+  <!-- +++++++++++++++++++++++++++++++++++++++ -->
+  <!-- factor screen -->
+  <!-- +++++++++++++++++++++++++++++++++++++++ -->
+  
+	
+	
+<screen controller="de.ovgu.caralert.gui.FactorSelectController" id="factor">
+
+		<!-- background-layer just for the pulsating load-screen -->
+		<layer backgroundColor="#ffffff00" childLayout="vertical" id="backLayer">
+			<panel align="center" childLayout="center" height="100%" id="loadingPanel" width="100%">
+				<control align="center" color="#00000000" font="Interface/Fonts/Arial32px.fnt" height="50px" id="loadingLabel" name="label" text="Loading..." valign="center">
+					<effect>
+						  <onEndScreen cycle="true" endColor="#000000ff" name="colorPulsate" period="1000" pulsateType="sin" startColor="#ffffffff"/>
+					</effect>
+				</control>
+			</panel>
+		</layer>
+		
+		
+		<layer backgroundColor="#ffffff00" childLayout="vertical" id="topLayer">
+
+			<panel align="center" childLayout="vertical" height="60%" id="factorPanel" style="nifty-panel" width="60%">
+				<!-- cool animation on entering and leaving -->
+				<effect>
+					<onStartScreen direction="top" factor="3.5" inherit="true" length="500" mode="in" name="move" timeType="exp"/>
+					<onEndScreen direction="top" factor="3.5" inherit="true" length="500" mode="out" name="move" timeType="exp"/>
+				</effect>
+
+				<!-- spacer -->
+				<panel childLayout="vertical" height="3%" width="100%"/>
+
+				<panel childLayout="center" id="headingPanel" width="100%">
+					<control align="center" height="25px" id="headingLabel" name="label" text="Please select environmental factors."/>
+				</panel>
+				
+				<panel childLayout="horizontal" id="factorSelectPanel" width="100%">
+
+					<!-- spacer -->
+					<panel childLayout="vertical" width="5%"/>
+
+					<panel childLayout="vertical" id="leftFactorsPanel" width="29%">
+
+						<panel align="left" childLayout="vertical" id="brightnessPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="brightnessLabel" name="label" height="25px" text="Brightness:"/>
+							<control id="brightnessRadioButtonGroup" name="radioButtonGroup"/>
+							<panel childLayout="horizontal" id="brightnessRadioButtons">
+								<panel align="left" childLayout="horizontal" id="brightness1Panel">
+									<control id="brightness1Label" name="label" height="25px" text="1:"/>
+									<control group="brightnessRadioButtonGroup" id="1brightnessRadioButton" name="radioButton"/>
+								</panel>
+								<panel align="center" childLayout="horizontal" id="brightness2Panel">
+									<control id="brightness2Label" name="label" height="25px" text="2:"/>
+									<control group="brightnessRadioButtonGroup" id="2brightnessRadioButton" name="radioButton"/>
+								</panel>
+								<panel align="right" childLayout="horizontal" id="brightness3Panel">
+									<control id="brightness3Label" name="label" height="25px" text="3:"/>
+									<control group="brightnessRadioButtonGroup" id="3brightnessRadioButton" name="radioButton"/>
+								</panel>
+							</panel>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="5%"/>
+
+						<panel align="left" childLayout="vertical" id="carClassPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="carClassLabel" name="label" height="25px" text="carClass:"/>
+							<control id="carClassRadioButtonGroup" name="radioButtonGroup"/>
+							<panel align="right" childLayout="horizontal" id="carClass1Panel">
+								<control id="carClass1Label" name="label" height="25px" text="Oberklasse:"/>
+								<control group="carClassRadioButtonGroup" id="1carClassRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="carClass2Panel">
+								<control id="carClass2Label" name="label" height="25px" text="Kompakt:"/>
+								<control group="carClassRadioButtonGroup" id="2carClassRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="carClass3Panel">
+								<control id="carClass3Label" name="label" height="25px" text="Sportwagen:"/>
+								<control group="carClassRadioButtonGroup" id="3carClassRadioButton" name="radioButton"/>
+							</panel>
+						</panel>
+					</panel>
+
+					<!-- spacer -->
+					<panel childLayout="vertical" width="2%"/>
+
+					<panel childLayout="vertical" id="middleFactorsPanel" width="28%">
+
+						<panel align="left" childLayout="vertical" id="carStatePanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="carStateLabel" name="label" height="25px" text="carState:"/>
+							<control id="carStateRadioButtonGroup" name="radioButtonGroup"/>
+							<panel align="right" childLayout="horizontal" id="carState1Panel">
+								<control id="carState1Label" name="label" height="25px" text="1:"/>
+								<control group="carStateRadioButtonGroup" id="1carStateRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="carState2Panel">
+								<control id="carState2Label" name="label" height="25px" text="2:"/>
+								<control group="carStateRadioButtonGroup" id="2carStateRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="carState3Panel">
+								<control id="carState3Label" name="label" height="25px" text="3:"/>
+								<control group="carStateRadioButtonGroup" id="3carStateRadioButton" name="radioButton"/>
+							</panel>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="5%"/>
+
+						<panel align="left" childLayout="vertical" id="driverConditionPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="driverConditionLabel" name="label" height="25px" text="driverCondition:"/>
+							<control id="driverConditionRadioButtonGroup" name="radioButtonGroup"/>
+							<panel align="right" childLayout="horizontal" id="driverCondition1Panel">
+								<control id="driverCondition1Label" name="label" height="25px" text="1:"/>
+								<control group="driverConditionRadioButtonGroup" id="1driverConditionRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="driverCondition2Panel">
+								<control id="driverCondition2Label" name="label" height="25px" text="2:"/>
+								<control group="driverConditionRadioButtonGroup" id="2driverConditionRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="driverCondition3Panel">
+								<control id="driverCondition3Label" name="label" height="25px" text="3:"/>
+								<control group="driverConditionRadioButtonGroup" id="3driverConditionRadioButton" name="radioButton"/>
+							</panel>
+						</panel>
+					</panel>
+
+					<!-- spacer -->
+					<panel childLayout="vertical" width="2%"/>
+					
+					<panel childLayout="vertical" id="rightFactorsPanel" width="29%">
+
+						<panel align="left" childLayout="vertical" id="environmentPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="environmentLabel" name="label" height="25px" text="environment:"/>
+							<control id="environmentRadioButtonGroup" name="radioButtonGroup"/>
+							<panel align="right" childLayout="horizontal" id="environment1Panel">
+								<control id="environment1Label" name="label" height="25px" text="1:"/>
+								<control group="environmentRadioButtonGroup" id="1environmentRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="environment2Panel">
+								<control id="environment2Label" name="label" height="25px" text="2:"/>
+								<control group="environmentRadioButtonGroup" id="1environmentRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="environment3Panel">
+								<control id="environment3Label" name="label" height="25px" text="3:"/>
+								<control group="environmentRadioButtonGroup" id="3environmentRadioButton" name="radioButton"/>
+							</panel>
+						</panel>
+
+						<panel childLayout="vertical" height="5%"/>
+
+						<panel align="left" childLayout="vertical" id="loadPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="loadLabel" name="label" height="25px" text="load:"/>
+							<control id="loadRadioButtonGroup" name="radioButtonGroup"/>
+							<panel align="right" childLayout="horizontal" id="load1Panel">
+								<control id="load1Label" name="label" height="25px" text="1:"/>
+								<control group="loadRadioButtonGroup" id="1loadRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="load2Panel">
+								<control id="load2Label" name="label" height="25px" text="2:"/>
+								<control group="loadRadioButtonGroup" id="2loadRadioButton" name="radioButton"/>
+							</panel>
+							<panel align="right" childLayout="horizontal" id="load3Panel">
+								<control id="load3Label" name="label" height="25px" text="3:"/>
+								<control group="loadRadioButtonGroup" id="3loadRadioButton" name="radioButton"/>
+							</panel>
+						</panel>
+					</panel>
+
+					<!-- spacer -->
+					<panel childLayout="vertical" width="5%"/>
+
+				</panel>
+				
+				<panel align="right" valign="bottom" childLayout="center">
+					<control id="okButton" name="button" label="OK" align="center" height="30px">
+						<interact onClick="clickOkButton()" />
+					</control>
+				</panel>
+				
+			</panel>
+
+			<!-- spacer -->
+			<panel height="20%" id=""/>
+			
+		</layer>
+				
+	</screen>
+</nifty>
