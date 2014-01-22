@@ -7,13 +7,13 @@ public class Blinkable implements GUITickable {
 
     public enum BlinkFrequency {
         //@formatter:off
-        VERY_SLOW(50),
-        SLOW(35),
-        NORMAL(25),
-        FAST(10),
-        VERY_FAST(5);
-        
+        VERY_SLOW(90),
+        SLOW(75),
+        NORMAL(50),
+        FAST(25),
+        VERY_FAST(10);
         //@formatter:on
+
         private int frequency;
 
         private BlinkFrequency(int frequency) {
