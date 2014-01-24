@@ -61,41 +61,39 @@
 
 						<panel align="left" childLayout="vertical" id="brightnessPanel" width="100%" backgroundColor="#8001">
 							<control align="left" id="brightnessLabel" name="label" height="25px" text="Brightness:"/>
-							<control id="brightnessRadioButtonGroup" name="radioButtonGroup"/>
-							<panel childLayout="horizontal" id="brightnessRadioButtons">
-								<panel align="left" childLayout="horizontal" id="brightness1Panel">
-									<control id="brightness1Label" name="label" height="25px" text="1:"/>
-									<control group="brightnessRadioButtonGroup" id="1brightnessRadioButton" name="radioButton"/>
-								</panel>
-								<panel align="center" childLayout="horizontal" id="brightness2Panel">
-									<control id="brightness2Label" name="label" height="25px" text="2:"/>
-									<control group="brightnessRadioButtonGroup" id="2brightnessRadioButton" name="radioButton"/>
-								</panel>
-								<panel align="right" childLayout="horizontal" id="brightness3Panel">
-									<control id="brightness3Label" name="label" height="25px" text="3:"/>
-									<control group="brightnessRadioButtonGroup" id="3brightnessRadioButton" name="radioButton"/>
-								</panel>
-							</panel>
+							<control id="brightnessDropDown" name="dropDown"/>
 						</panel>
 
 						<!-- spacer -->
-						<panel childLayout="vertical" height="5%"/>
+						<panel childLayout="vertical" height="2%"/>
 
 						<panel align="left" childLayout="vertical" id="carClassPanel" width="100%" backgroundColor="#8001">
 							<control align="left" id="carClassLabel" name="label" height="25px" text="carClass:"/>
-							<control id="carClassRadioButtonGroup" name="radioButtonGroup"/>
-							<panel align="right" childLayout="horizontal" id="carClass1Panel">
-								<control id="carClass1Label" name="label" height="25px" text="Oberklasse:"/>
-								<control group="carClassRadioButtonGroup" id="1carClassRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="carClass2Panel">
-								<control id="carClass2Label" name="label" height="25px" text="Kompakt:"/>
-								<control group="carClassRadioButtonGroup" id="2carClassRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="carClass3Panel">
-								<control id="carClass3Label" name="label" height="25px" text="Sportwagen:"/>
-								<control group="carClassRadioButtonGroup" id="3carClassRadioButton" name="radioButton"/>
-							</panel>
+							<control id="carClassDropDown" name="dropDown"/>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+						
+						<panel align="left" childLayout="vertical" id="carStatePanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="carStateLabel" name="label" height="25px" text="carState:"/>
+							<control id="carStateDropDown" name="dropDown"/>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+
+						<panel align="left" childLayout="vertical" id="driverConditionPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="driverConditionLabel" name="label" height="25px" text="driverCondition:"/>
+							<control id="driverConditionDropDown" name="dropDown"/>
+						</panel>
+						
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+
+						<panel align="left" childLayout="vertical" id="environmentPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="environmentLabel" name="label" height="25px" text="environment:"/>
+							<control id="environmentDropDown" name="dropDown"/>
 						</panel>
 					</panel>
 
@@ -104,42 +102,44 @@
 
 					<panel childLayout="vertical" id="middleFactorsPanel" width="28%">
 
-						<panel align="left" childLayout="vertical" id="carStatePanel" width="100%" backgroundColor="#8001">
-							<control align="left" id="carStateLabel" name="label" height="25px" text="carState:"/>
-							<control id="carStateRadioButtonGroup" name="radioButtonGroup"/>
-							<panel align="right" childLayout="horizontal" id="carState1Panel">
-								<control id="carState1Label" name="label" height="25px" text="1:"/>
-								<control group="carStateRadioButtonGroup" id="1carStateRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="carState2Panel">
-								<control id="carState2Label" name="label" height="25px" text="2:"/>
-								<control group="carStateRadioButtonGroup" id="2carStateRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="carState3Panel">
-								<control id="carState3Label" name="label" height="25px" text="3:"/>
-								<control group="carStateRadioButtonGroup" id="3carStateRadioButton" name="radioButton"/>
-							</panel>
+						<panel align="left" childLayout="vertical" id="loadPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="loadLabel" name="label" height="25px" text="load:"/>
+							<control id="loadDropDown" name="dropDown"/>
 						</panel>
 
 						<!-- spacer -->
-						<panel childLayout="vertical" height="5%"/>
+						<panel childLayout="vertical" height="2%"/>
 
-						<panel align="left" childLayout="vertical" id="driverConditionPanel" width="100%" backgroundColor="#8001">
-							<control align="left" id="driverConditionLabel" name="label" height="25px" text="driverCondition:"/>
-							<control id="driverConditionRadioButtonGroup" name="radioButtonGroup"/>
-							<panel align="right" childLayout="horizontal" id="driverCondition1Panel">
-								<control id="driverCondition1Label" name="label" height="25px" text="1:"/>
-								<control group="driverConditionRadioButtonGroup" id="1driverConditionRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="driverCondition2Panel">
-								<control id="driverCondition2Label" name="label" height="25px" text="2:"/>
-								<control group="driverConditionRadioButtonGroup" id="2driverConditionRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="driverCondition3Panel">
-								<control id="driverCondition3Label" name="label" height="25px" text="3:"/>
-								<control group="driverConditionRadioButtonGroup" id="3driverConditionRadioButton" name="radioButton"/>
-							</panel>
+						<panel align="left" childLayout="vertical" id="passangerPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="passangerLabel" name="label" height="25px" text="passanger:"/>
+							<control id="passangerDropDown" name="dropDown"/>
 						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+
+						<panel align="left" childLayout="vertical" id="placeKnowledgePanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="placeKnowledgeLabel" name="label" height="25px" text="placeKnowledge:"/>
+							<control id="placeKnowledgeDropDown" name="dropDown"/>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+
+						<panel align="left" childLayout="vertical" id="routeDurationPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="routeDurationLabel" name="label" height="25px" text="routeDuration:"/>
+							<control id="routeDurationDropDown" name="dropDown"/>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+
+						<panel align="left" childLayout="vertical" id="signPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="signLabel" name="label" height="25px" text="sign:"/>
+							<control id="signDropDown" name="dropDown"/>
+						</panel>
+						
+						
 					</panel>
 
 					<!-- spacer -->
@@ -147,40 +147,41 @@
 					
 					<panel childLayout="vertical" id="rightFactorsPanel" width="29%">
 
-						<panel align="left" childLayout="vertical" id="environmentPanel" width="100%" backgroundColor="#8001">
-							<control align="left" id="environmentLabel" name="label" height="25px" text="environment:"/>
-							<control id="environmentRadioButtonGroup" name="radioButtonGroup"/>
-							<panel align="right" childLayout="horizontal" id="environment1Panel">
-								<control id="environment1Label" name="label" height="25px" text="1:"/>
-								<control group="environmentRadioButtonGroup" id="1environmentRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="environment2Panel">
-								<control id="environment2Label" name="label" height="25px" text="2:"/>
-								<control group="environmentRadioButtonGroup" id="1environmentRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="environment3Panel">
-								<control id="environment3Label" name="label" height="25px" text="3:"/>
-								<control group="environmentRadioButtonGroup" id="3environmentRadioButton" name="radioButton"/>
-							</panel>
+						<panel align="left" childLayout="vertical" id="temperaturePanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="temperatureLabel" name="label" height="25px" text="temperature:"/>
+							<control id="temperatureDropDown" name="dropDown"/>
 						</panel>
 
-						<panel childLayout="vertical" height="5%"/>
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
 
-						<panel align="left" childLayout="vertical" id="loadPanel" width="100%" backgroundColor="#8001">
-							<control align="left" id="loadLabel" name="label" height="25px" text="load:"/>
-							<control id="loadRadioButtonGroup" name="radioButtonGroup"/>
-							<panel align="right" childLayout="horizontal" id="load1Panel">
-								<control id="load1Label" name="label" height="25px" text="1:"/>
-								<control group="loadRadioButtonGroup" id="1loadRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="load2Panel">
-								<control id="load2Label" name="label" height="25px" text="2:"/>
-								<control group="loadRadioButtonGroup" id="2loadRadioButton" name="radioButton"/>
-							</panel>
-							<panel align="right" childLayout="horizontal" id="load3Panel">
-								<control id="load3Label" name="label" height="25px" text="3:"/>
-								<control group="loadRadioButtonGroup" id="3loadRadioButton" name="radioButton"/>
-							</panel>
+						<panel align="left" childLayout="vertical" id="timePanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="timeLabel" name="label" height="25px" text="time:"/>
+							<control id="timeDropDown" name="dropDown"/>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+
+						<panel align="left" childLayout="vertical" id="trafficIntensityPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="trafficIntensityLabel" name="label" height="25px" text="trafficIntensity:"/>
+							<control id="trafficIntensityDropDown" name="dropDown"/>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+
+						<panel align="left" childLayout="vertical" id="volumnePanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="volumneLabel" name="label" height="25px" text="volumne:"/>
+							<control id="volumneDropDown" name="dropDown"/>
+						</panel>
+
+						<!-- spacer -->
+						<panel childLayout="vertical" height="2%"/>
+
+						<panel align="left" childLayout="vertical" id="weatherPanel" width="100%" backgroundColor="#8001">
+							<control align="left" id="weatherLabel" name="label" height="25px" text="weather:"/>
+							<control id="weatherDropDown" name="dropDown"/>
 						</panel>
 					</panel>
 
