@@ -74,7 +74,7 @@ public class MotorControllFailureScenario extends AbstractScenario {
 
     private BitmapText getInfoText(String text) {
         BitmapText infoText = new BitmapText(getCore().getCarAlertGUI().getFont());
-        infoText.setText("Bei der n�chsten M�glichkeit halten und Auto neustarten");
+        infoText.setText(text);
         infoText.setColor(ColorRGBA.White);
         infoText.setLocalTranslation((settings.getWidth() / 2) - (infoText.getLineWidth() / 2), settings.getHeight() - 50 - infoText.getLineHeight(), 0);
 

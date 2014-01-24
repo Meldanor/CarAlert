@@ -150,6 +150,10 @@ public class CarAlertGUI {
         this.guiNode.attachChild(tickable.getSpatial());
         this.tickables.add(tickable);
     }
+    
+    public void add(Spatial spatial) {
+        this.guiNode.attachChild(spatial);
+    }
 
     public BitmapFont getFont() {
         return font;
