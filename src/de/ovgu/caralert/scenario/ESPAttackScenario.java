@@ -30,7 +30,7 @@ public class ESPAttackScenario extends AbstractScenario {
     // t3={v3|s2, a1, u3, w2, {}, {f6.1, f13.14}}
     private AppSettings settings;
 
-    protected ESPAttackScenario(CarAlertCore core) {
+    public ESPAttackScenario(CarAlertCore core) {
         super(core);
         settings = getCore().getSimulator().getSettings();
     }
@@ -39,16 +39,16 @@ public class ESPAttackScenario extends AbstractScenario {
     public boolean update(long diff) {
         if (reachedSpeedLimit()) {
             trigger();
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
     private static final float SPEED_LIMIT = 80.0f;
 
     private boolean reachedSpeedLimit() {
-        return getCore().getSimulator().getCar().getCurrentSpeedKmh() < SPEED_LIMIT;
+        return getCore().getSimulator().getCar().getCurrentSpeedKmh() > SPEED_LIMIT;
     }
 
     @Override

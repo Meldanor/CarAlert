@@ -18,6 +18,7 @@ import de.ovgu.caralert.factor.WeatherFactor;
 import de.ovgu.caralert.gui.CarAlertGUI;
 import de.ovgu.caralert.scenario.AbstractScenario;
 import de.ovgu.caralert.scenario.AirConditionerFailureScenario;
+import de.ovgu.caralert.scenario.ESPAttackScenario;
 import eu.opends.main.Simulator;
 
 public class CarAlertCore {
@@ -41,7 +42,7 @@ public class CarAlertCore {
     }
 
     private void init() {
-        this.scenario = new AirConditionerFailureScenario(this);
+        this.scenario = new ESPAttackScenario(this);
     }
 
     private long lastTimestamp = 0;

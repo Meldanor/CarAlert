@@ -36,7 +36,7 @@ public class NavigationSoftwareAttackScenario extends AbstractScenario {
     // Schadcodes lautet t4={v5, a1, u3, w2, {}, {f6.2, f13.15}}
     private AppSettings settings;
 
-    protected NavigationSoftwareAttackScenario(CarAlertCore core) {
+    public NavigationSoftwareAttackScenario(CarAlertCore core) {
         super(core);
         settings = getCore().getSimulator().getSettings();
     }
