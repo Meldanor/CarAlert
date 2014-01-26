@@ -11,10 +11,10 @@ public abstract class Factor {
     /**
      * Evaluate the current state of the factor and reduce the complex state to
      * a positive or zero number. Low numbers are representing less dangerous
-     * situation, higher numbers describte dangerous situations.
+     * situation, higher numbers describe dangerous situations.
      * 
-     * @return A positive or zero number representing how dangerous is the state
-     *         of the factor
+     * @return A positive or zero number representing how dangerous the state
+     *         of the factor is
      */
     public abstract int getWeight();
 }
