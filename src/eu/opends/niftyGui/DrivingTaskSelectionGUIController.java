@@ -40,6 +40,7 @@ import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 import de.lessvoid.nifty.tools.Color;
 import de.lessvoid.nifty.tools.SizeValue;
+import de.ovgu.caralert.gui.FactorSelectController;
 import eu.opends.drivingTask.DrivingTask;
 import eu.opends.main.SimulationDefaults;
 import eu.opends.main.Simulator;
@@ -93,10 +94,10 @@ public class DrivingTaskSelectionGUIController implements ScreenController
 	@Override
     public void onEndScreen() 
 	{
-		String driverName = getTextFromTextfield("driversNameTextfield");
+//		String driverName = getTextFromTextfield("driversNameTextfield");
 		//if(driverName.isEmpty()) driverName = SimulationDefaults.driverName; // this is already done in "simpleInitDrivingTask"
 		
-		sim.simpleInitDrivingTask(getTextFromTextfield("drivingTaskTextfield"),driverName);
+//		sim.simpleInitDrivingTask(getTextFromTextfield("drivingTaskTextfield"),driverName);
 	}
 	
 	
@@ -122,7 +123,11 @@ public class DrivingTaskSelectionGUIController implements ScreenController
     	sim.stop();
     }
     
-    
+	public void clickFactorsButton()
+	{
+		nifty.fromXml("Interface/FactorSelection.xml", "factor", new FactorSelectController(sim, nifty));		
+	}
+	
 	public void clickCloseButton()
 	{
 		nifty.closePopup(errorPopup.getId());
