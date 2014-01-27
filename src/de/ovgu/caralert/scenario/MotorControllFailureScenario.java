@@ -82,11 +82,11 @@ public class MotorControllFailureScenario extends AbstractScenario {
     }
 
     private Picture getEnginePicture() {
-        Picture engineIcon = new Picture();
+        Picture engineIcon = new Picture("enginecheck");
         engineIcon.setImage(getCore().getSimulator().getAssetManager(), "CarAlert/Textures/Motorkontrollleuchte.png", true);
         engineIcon.setHeight(50);
         engineIcon.setWidth(50);
-        engineIcon.setPosition((settings.getWidth() / 2) - 50, settings.getHeight() - 50 - 50);
+        engineIcon.setPosition((settings.getWidth() / 2) - 25, settings.getHeight() - 50 - 100);
 
         return engineIcon;
     }

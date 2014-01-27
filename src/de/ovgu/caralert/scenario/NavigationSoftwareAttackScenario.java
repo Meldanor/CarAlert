@@ -101,11 +101,11 @@ public class NavigationSoftwareAttackScenario extends AbstractScenario {
     }
 
     private Picture getWarningPicture() {
-        Picture engineIcon = new Picture();
+        Picture engineIcon = new Picture("warningtriangle");
         engineIcon.setImage(getCore().getSimulator().getAssetManager(), "CarAlert/Textures/Warndreieck.png", true);
         engineIcon.setHeight(50);
         engineIcon.setWidth(50);
-        engineIcon.setPosition((settings.getWidth() / 2) - 50, settings.getHeight() - 50 - 50);
+        engineIcon.setPosition((settings.getWidth() / 2) - 25, settings.getHeight() - 50 - 100);
 
         return engineIcon;
     }
