@@ -115,6 +115,9 @@ public class DrivingTaskSelectionGUIController implements ScreenController
     		errorPopup = nifty.createPopup("errorPopup");
     		nifty.showPopup(nifty.getCurrentScreen(), errorPopup.getId(), null);
     	}
+        String driverName = getTextFromTextfield("driversNameTextfield");
+        
+        sim.simpleInitDrivingTask(getTextFromTextfield("drivingTaskTextfield"),driverName);
     }
     
 
