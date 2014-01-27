@@ -67,15 +67,19 @@ public abstract class AbstractScenario implements Tickable {
         DangerRank danger = getCore().getFactorAnalyzer().analyze();
         switch (danger) {
             case SAVE :
+                System.out.println("Kaum Gefahr");
                 onNoRisk();
                 break;
             case LOW :
+                System.out.println("Geringe Gefahr");
                 onLowRisk();
                 break;
             case HIGH :
+                System.out.println("Hohe Gefahr");
                 onHighRisk();
                 break;
             case SEVERE :
+                System.out.println("Extreme Gefahr");
                 onSevereRisk();
                 break;
             default :

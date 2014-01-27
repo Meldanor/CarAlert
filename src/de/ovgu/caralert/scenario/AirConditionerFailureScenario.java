@@ -29,9 +29,8 @@ public class AirConditionerFailureScenario extends AbstractScenario {
     // Keine Gefahr - viele Informationen, da Quelle unkritisch ist
     @Override
     public void onNoRisk() {
-        System.out.println("Keine Gefahr!");
         BitmapText warning = getWarningText("Klimaanlage ausgefallen");
-        BitmapText info = getInfoText("Bei der nächsten Möglichkeit halten und Auto neustarten");
+        BitmapText info = getInfoText("Bei der nï¿½chsten Mï¿½glichkeit halten und Auto neustarten");
 
         getCore().getCarAlertGUI().add(new Blinkable(warning, BlinkFrequency.NORMAL));
         getCore().getCarAlertGUI().add(new Blinkable(info, BlinkFrequency.NORMAL));
@@ -40,10 +39,8 @@ public class AirConditionerFailureScenario extends AbstractScenario {
     // Kleine Gefahr - Informationen unaufdringlicher
     @Override
     public void onLowRisk() {
-        System.out.println("Geringe gefahr!");
-
         BitmapText warning = getWarningText("Klimaanlage ausgefallen");
-        BitmapText info = getInfoText("Bei der nächsten Möglichkeit halten und Auto neustarten");
+        BitmapText info = getInfoText("Bei der nÃ¤chsten MÃ¶glichkeit halten und Auto neustarten");
 
         getCore().getCarAlertGUI().add(new Blinkable(warning, BlinkFrequency.SLOW));
         getCore().getCarAlertGUI().add(new Blinkable(info, BlinkFrequency.SLOW));
@@ -52,9 +49,8 @@ public class AirConditionerFailureScenario extends AbstractScenario {
     // Kleine Gefahr - Informationen unaufdringlicher
     @Override
     public void onHighRisk() {
-        System.out.println("Hohe Gefahr!");
         BitmapText warning = getWarningText("Klimaanlage ausgefallen");
-        BitmapText info = getInfoText("Bei der nächsten Möglichkeit halten und Auto neustarten");
+        BitmapText info = getInfoText("Bei der nÃ¤chsten MÃ¶glichkeit halten und Auto neustarten");
 
         getCore().getCarAlertGUI().add(new Fadeout(warning, TimeUnit.SECONDS.toMillis(20)));
         getCore().getCarAlertGUI().add(new Fadeout(info, TimeUnit.SECONDS.toMillis(20)));
@@ -62,9 +58,8 @@ public class AirConditionerFailureScenario extends AbstractScenario {
 
     @Override
     public void onSevereRisk() {
-        System.out.println("Sehr hohe Gefahr!");
         BitmapText warning = getWarningText("Klimaanlage ausgefallen");
-        BitmapText info = getInfoText("Bei der nächsten Möglichkeit halten und Auto neustarten");
+        BitmapText info = getInfoText("Bei der nÃ¤chsten MÃ¶glichkeit halten und Auto neustarten");
 
         getCore().getCarAlertGUI().add(new Fadeout(warning, TimeUnit.SECONDS.toMillis(10)));
         getCore().getCarAlertGUI().add(new Fadeout(info, TimeUnit.SECONDS.toMillis(10)));
@@ -81,7 +76,7 @@ public class AirConditionerFailureScenario extends AbstractScenario {
 
     private BitmapText getInfoText(String text) {
         BitmapText infoText = new BitmapText(getCore().getCarAlertGUI().getFont());
-        infoText.setText("Bei der nächsten Möglichkeit halten und Auto neustarten");
+        infoText.setText(text);
         infoText.setColor(ColorRGBA.White);
         infoText.setLocalTranslation((settings.getWidth() / 2) - (infoText.getLineWidth() / 2), settings.getHeight() - 50 - infoText.getLineHeight(), 0);
 
