@@ -1,5 +1,7 @@
 package de.ovgu.caralert.factor;
 
+import de.ovgu.caralert.gui.FactorSelectController;
+
 /**
  * Represents how many other cars are there at the moment.
  */
@@ -7,8 +9,7 @@ public class TrafficIntensityFactor extends Factor {
 
     @Override
     public int getWeight() {
-        // TODO Auto-generated method stub
-        return 0;
+        return FactorSelectController.trafficIntensityFactor;
     }
 
 }

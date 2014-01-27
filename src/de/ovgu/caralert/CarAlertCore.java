@@ -17,7 +17,6 @@ import de.ovgu.caralert.factor.VolumneFactor;
 import de.ovgu.caralert.factor.WeatherFactor;
 import de.ovgu.caralert.gui.CarAlertGUI;
 import de.ovgu.caralert.scenario.AbstractScenario;
-import de.ovgu.caralert.scenario.AirConditionerFailureScenario;
 import de.ovgu.caralert.scenario.ESPAttackScenario;
 import eu.opends.main.Simulator;
 

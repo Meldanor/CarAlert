@@ -1,5 +1,7 @@
 package de.ovgu.caralert.factor;
 
+import de.ovgu.caralert.gui.FactorSelectController;
+
 /**
  * Represents the current volumne of the enviroment.
  */
@@ -7,8 +9,7 @@ public class VolumneFactor extends Factor {
 
     @Override
     public int getWeight() {
-        // TODO Auto-generated method stub
-        return 0;
+        return FactorSelectController.volumneFactor;
     }
 
 }

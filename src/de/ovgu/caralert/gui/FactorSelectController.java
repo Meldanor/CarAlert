@@ -7,220 +7,236 @@ import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyEventSubscriber;
 import de.lessvoid.nifty.controls.DropDown;
 import de.lessvoid.nifty.controls.DropDownSelectionChangedEvent;
-import de.lessvoid.nifty.controls.dropdown.DropDownControl;
-import de.lessvoid.nifty.controls.label.builder.LabelBuilder;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 import eu.opends.main.Simulator;
 import eu.opends.niftyGui.DrivingTaskSelectionGUIController;
 
-public class FactorSelectController implements ScreenController{
-	
-	int brightnessFactor = 1;
-	int carClassFactor = 1;
-	int carSelectionFactor = 1;
-	int driverConditionFactor = 1;
-	int environmentFactor = 1;
-	int loadFactor = 1;
-	int passangerFactor = 1;
-	int placeKnowledgeFactor = 1;
-	int routeDurationFactor = 1;
-	int signFactor = 1;
-	int temperatureFactor = 1;
-	int timeFactor = 1;
-	int trafficIntensityFactor = 1;
-	int volumneFactor = 1;
-	int weatherFactor = 1;
-	
+public class FactorSelectController implements ScreenController {
 
-	private Simulator sim;
-	private Nifty nifty;
-	
-	public FactorSelectController(Simulator sim, Nifty nifty)
-	{
-		this.sim = sim;
-		this.nifty = nifty;
-		
-		AssetManager assetManager = sim.getAssetManager();
-		assetManager.registerLocator("assets", FileLocator.class.getName());
-	}
-	
-	public void clickOkButton(){
-		//TODO: convert the factor-ints into factors and put them to the settings; close the dialog and return to DrivingTaskSelection
-//		sim.getCarAlertCore(). --> Settings
-		nifty.fromXml("Interface/DrivingTaskSelectionGUI.xml", "start", new DrivingTaskSelectionGUIController(sim, nifty));
-	}
+    public static int brightnessFactor;
+    public static int carClassFactor;
+    public static int carSelectionFactor;
+    public static int carStateFactor;
+    public static int driverConditionFactor;
+    public static int environmentFactor;
+    public static int loadFactor;
+    public static int passangerFactor;
+    public static int placeKnowledgeFactor;
+    public static int routeDurationFactor;
+    public static int signFactor;
+    public static int temperatureFactor;
+    public static int timeFactor;
+    public static int trafficIntensityFactor;
+    public static int volumneFactor;
+    public static int weatherFactor;
 
+    private Simulator sim;
+    private Nifty nifty;
 
-	@NiftyEventSubscriber(id="brightnessDropDown")
-	public void onbrightnessDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.brightnessFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    public FactorSelectController(Simulator sim, Nifty nifty) {
+        this.sim = sim;
+        this.nifty = nifty;
 
-	@NiftyEventSubscriber(id="carClassDropDown")
-	public void onCarClassDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.carClassFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+        AssetManager assetManager = sim.getAssetManager();
+        assetManager.registerLocator("assets", FileLocator.class.getName());
+    }
 
-	@NiftyEventSubscriber(id="carSelectionDropDown")
-	public void onCarSelectionDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.carSelectionFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    public void clickOkButton() {
+        // TODO: close the dialog and return to DrivingTaskSelection
+        // sim.getCarAlertCore(). --> Settings
+        nifty.fromXml("Interface/DrivingTaskSelectionGUI.xml", "start", new DrivingTaskSelectionGUIController(sim, nifty));
+    }
 
-	@NiftyEventSubscriber(id="driverConditionDropDown")
-	public void onDriverConditionDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.driverConditionFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "brightnessDropDown")
+    public void onbrightnessDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        brightnessFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="environmentDropDown")
-	public void onEnvironmentDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.environmentFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "carClassDropDown")
+    public void onCarClassDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        carClassFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="loadDropDown")
-	public void onLoadDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.loadFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "carSelectionDropDown")
+    public void onCarSelectionDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        carSelectionFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="passangerDropDown")
-	public void onPassangerDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.passangerFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "carStateDropDown")
+    public void onCarStateDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        carStateFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="placeKnowledgeDropDown")
-	public void onplaceKnowledgeDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.placeKnowledgeFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "driverConditionDropDown")
+    public void onDriverConditionDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        driverConditionFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="routeDurationDropDown")
-	public void onRouteDurationDropDown(final String id, final DropDownSelectionChangedEvent event){
-	this.routeDurationFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "environmentDropDown")
+    public void onEnvironmentDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        environmentFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="signDropDown")
-	public void onsignDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.signFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "loadDropDown")
+    public void onLoadDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        loadFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="temperatureDropDown")
-	public void onTemperatureDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.temperatureFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "passangerDropDown")
+    public void onPassangerDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        passangerFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="timeDropDown")
-	public void onTimeDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.timeFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "placeKnowledgeDropDown")
+    public void onplaceKnowledgeDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        placeKnowledgeFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="trafficIntensityDropDown")
-	public void onTrafficIntensityDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.trafficIntensityFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "routeDurationDropDown")
+    public void onRouteDurationDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        routeDurationFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="volumneDropDown")
-	public void onVolumneDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.volumneFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
+    @NiftyEventSubscriber(id = "signDropDown")
+    public void onsignDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        signFactor = event.getSelection().getWeight();
+    }
 
-	@NiftyEventSubscriber(id="weatherDropDown")
-	public void onWeatherDropDown(final String id, final DropDownSelectionChangedEvent event){
-		this.weatherFactor = nifty.getScreen("factor").findNiftyControl(id, DropDown.class).getSelectedIndex()+1;
-	}
-	
-	
-	
-	@Override
-	public void bind(Nifty nifty, Screen screen) {
-		//populate the dropDownMenus
-				
-		DropDown brightnessDropDown = screen.findNiftyControl("brightnessDropDown", DropDown.class);
-		System.out.println("test:" + brightnessDropDown.toString());
-		brightnessDropDown.addItem("Tageslicht");
-		brightnessDropDown.addItem("Nacht");
-		brightnessDropDown.addItem("Dämmerung");
+    @NiftyEventSubscriber(id = "temperatureDropDown")
+    public void onTemperatureDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        temperatureFactor = event.getSelection().getWeight();
+    }
 
-		DropDown carClassDropDown = screen.findNiftyControl("carClassDropDown", DropDown.class);
-		carClassDropDown.addItem("Mittel-/Oberklasse");
-		carClassDropDown.addItem("Kompaktwagen");
-		carClassDropDown.addItem("Sportwagen/LKW");
+    @NiftyEventSubscriber(id = "timeDropDown")
+    public void onTimeDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        timeFactor = event.getSelection().getWeight();
+    }
 
-		DropDown carStateDropDown = screen.findNiftyControl("carStateDropDown", DropDown.class);
-		carStateDropDown.addItem("keine Mängel");
-		carStateDropDown.addItem("1 Mangel");
-		carStateDropDown.addItem("mehrere Mängel");
+    @NiftyEventSubscriber(id = "trafficIntensityDropDown")
+    public void onTrafficIntensityDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        trafficIntensityFactor = event.getSelection().getWeight();
+    }
 
-		DropDown driverConditionDropDown = screen.findNiftyControl("driverConditionDropDown", DropDown.class);
-		driverConditionDropDown.addItem("keine Faktoren");
-		driverConditionDropDown.addItem("1 Faktor");
-		driverConditionDropDown.addItem("mehrere Faktoren");
+    @NiftyEventSubscriber(id = "volumneDropDown")
+    public void onVolumneDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        volumneFactor = event.getSelection().getWeight();
+    }
 
-		DropDown environmentDropDown = screen.findNiftyControl("environmentDropDown", DropDown.class);
-		environmentDropDown.addItem("Stadt");
-		environmentDropDown.addItem("Autobahn");
-		environmentDropDown.addItem("Gelände");
+    @NiftyEventSubscriber(id = "weatherDropDown")
+    public void onWeatherDropDown(final String id, final DropDownSelectionChangedEvent<FaktorItem> event) {
+        weatherFactor = event.getSelection().getWeight();
+    }
 
-		DropDown loadDropDown = screen.findNiftyControl("loadDropDown", DropDown.class);
-		loadDropDown.addItem("wenig Beladung");
-		loadDropDown.addItem("Beladung + Dachgepäck");
-		loadDropDown.addItem("Beladung + Anhänger");
+    @SuppressWarnings("unchecked")
+    @Override
+    public void bind(Nifty nifty, Screen screen) {
 
-		DropDown passangerDropDown = screen.findNiftyControl("passangerDropDown", DropDown.class);
-		passangerDropDown.addItem("1");
-		passangerDropDown.addItem("2");
-		passangerDropDown.addItem(">2");
+        // populate the dropDownMenus
+        DropDown<FaktorItem> brightnessDropDown = screen.findNiftyControl("brightnessDropDown", DropDown.class);
+        brightnessDropDown.addItem(new FaktorItem(0, "Tageslicht"));
+        brightnessDropDown.addItem(new FaktorItem(1, "Nacht"));
+        brightnessDropDown.addItem(new FaktorItem(2, "DÃ¤mmerung"));
 
-		DropDown placeKnowledgeDropDown = screen.findNiftyControl("placeKnowledgeDropDown", DropDown.class);
-		placeKnowledgeDropDown.addItem("häufig gefahren");
-		placeKnowledgeDropDown.addItem("bekannte Strecke");
-		placeKnowledgeDropDown.addItem("unbekannte Strecke");
+        DropDown<FaktorItem> carClassDropDown = screen.findNiftyControl("carClassDropDown", DropDown.class);
+        carClassDropDown.addItem(new FaktorItem(0, "Mittel-/Oberklasse"));
+        carClassDropDown.addItem(new FaktorItem(1, "Kompaktwagen"));
+        carClassDropDown.addItem(new FaktorItem(2, "Sportwagen/LKW"));
 
-		DropDown routeDurationDropDown = screen.findNiftyControl("routeDurationDropDown", DropDown.class);
-		routeDurationDropDown.addItem("<1h");
-		routeDurationDropDown.addItem("1-2h");
-		routeDurationDropDown.addItem(">2h");
+        DropDown<FaktorItem> carStateDropDown = screen.findNiftyControl("carStateDropDown", DropDown.class);
+        carStateDropDown.addItem(new FaktorItem(0, "Kein Mangel"));
+        carStateDropDown.addItem(new FaktorItem(2, "1 Mangel"));
+        carStateDropDown.addItem(new FaktorItem(3, "Mehrere MÃ¤ngel"));
 
-		DropDown signDropDown = screen.findNiftyControl("signDropDown", DropDown.class);
-		signDropDown.addItem("beachtet Schilder");
-		signDropDown.addItem("geringfügige Abweichung");
-		signDropDown.addItem("Missachtung");
+        DropDown<FaktorItem> driverConditionDropDown = screen.findNiftyControl("driverConditionDropDown", DropDown.class);
+        driverConditionDropDown.addItem(new FaktorItem(0, "Entspannt"));
+        driverConditionDropDown.addItem(new FaktorItem(3, "1 Zustand"));
+        driverConditionDropDown.addItem(new FaktorItem(5, "Mehrere ZustÃ¤nde"));
 
-		DropDown temperatureDropDown = screen.findNiftyControl("temperatureDropDown", DropDown.class);
-		temperatureDropDown.addItem("10-25°C");
-		temperatureDropDown.addItem("<10°C / >25°C");
-		temperatureDropDown.addItem("<3°C / >35°C");
+        DropDown<FaktorItem> environmentDropDown = screen.findNiftyControl("environmentDropDown", DropDown.class);
+        environmentDropDown.addItem(new FaktorItem(0, "Stadt"));
+        environmentDropDown.addItem(new FaktorItem(1, "Autobahn"));
+        environmentDropDown.addItem(new FaktorItem(2, "GelÃ¤nde"));
 
-		DropDown timeDropDown = screen.findNiftyControl("timeDropDown", DropDown.class);
-		timeDropDown.addItem("9-16 Uhr");
-		timeDropDown.addItem("6-9 oder 16-21 Uhr");
-		timeDropDown.addItem("21-6 Uhr");
+        DropDown<FaktorItem> loadDropDown = screen.findNiftyControl("loadDropDown", DropDown.class);
+        loadDropDown.addItem(new FaktorItem(0, "Wenig Beladung"));
+        loadDropDown.addItem(new FaktorItem(1, "Beladung + DachgepÃ¤ck"));
+        loadDropDown.addItem(new FaktorItem(3, "Beladung + AnhÃ¤nger"));
 
-		DropDown trafficIntensityDropDown = screen.findNiftyControl("trafficIntensityDropDown", DropDown.class);
-		trafficIntensityDropDown.addItem("kein/kaum Verkehr");
-		trafficIntensityDropDown.addItem("normaler Verkehr");
-		trafficIntensityDropDown.addItem("viel Verkehr/Stau");
+        DropDown<FaktorItem> passangerDropDown = screen.findNiftyControl("passangerDropDown", DropDown.class);
+        passangerDropDown.addItem(new FaktorItem(0, "1"));
+        passangerDropDown.addItem(new FaktorItem(1, "2"));
+        passangerDropDown.addItem(new FaktorItem(2, "Mehr als 2"));
 
-		DropDown volumneDropDown = screen.findNiftyControl("volumneDropDown", DropDown.class);
-		volumneDropDown.addItem("<55dB");
-		volumneDropDown.addItem("55-80dB");
-		volumneDropDown.addItem(">80dB");
+        DropDown<FaktorItem> placeKnowledgeDropDown = screen.findNiftyControl("placeKnowledgeDropDown", DropDown.class);
+        placeKnowledgeDropDown.addItem(new FaktorItem(0, "HÃ¤ufig gefahren"));
+        placeKnowledgeDropDown.addItem(new FaktorItem(1, "Bekannte Strecke"));
+        placeKnowledgeDropDown.addItem(new FaktorItem(2, "Unbekannte Strecke"));
 
-		DropDown weatherDropDown = screen.findNiftyControl("weatherDropDown", DropDown.class);
-		weatherDropDown.addItem("gutes Wetter");
-		weatherDropDown.addItem("Regen/Wind");
-		weatherDropDown.addItem("Nebel/Glätte/Sturm");
-	}
+        DropDown<FaktorItem> routeDurationDropDown = screen.findNiftyControl("routeDurationDropDown", DropDown.class);
+        routeDurationDropDown.addItem(new FaktorItem(0, "< 1 Stunde"));
+        routeDurationDropDown.addItem(new FaktorItem(2, "1-2 Stunden"));
+        routeDurationDropDown.addItem(new FaktorItem(4, "> 2 Stunden"));
 
-	@Override
-	public void onEndScreen() {
-		// TODO Auto-generated method stub
-		
-	}
+        DropDown<FaktorItem> signDropDown = screen.findNiftyControl("signDropDown", DropDown.class);
+        signDropDown.addItem(new FaktorItem(0, "Beachtet Schilder"));
+        signDropDown.addItem(new FaktorItem(2, "GeringfÃ¼gige Abweichung"));
+        signDropDown.addItem(new FaktorItem(4, "Missachtung"));
 
-	@Override
-	public void onStartScreen() {
-		
-		
-	}
-	
-	
+        DropDown<FaktorItem> temperatureDropDown = screen.findNiftyControl("temperatureDropDown", DropDown.class);
+        temperatureDropDown.addItem(new FaktorItem(0, "10-20 Â°C"));
+        temperatureDropDown.addItem(new FaktorItem(1, "<10 Â°C / > 20 Â°C"));
+        temperatureDropDown.addItem(new FaktorItem(2, "<3 Â°C / > 35 Â°C"));
+
+        DropDown<FaktorItem> timeDropDown = screen.findNiftyControl("timeDropDown", DropDown.class);
+        timeDropDown.addItem(new FaktorItem(0, "9 - 16 Uhr"));
+        timeDropDown.addItem(new FaktorItem(2, "6-9 oder 16-21 Uhr"));
+        timeDropDown.addItem(new FaktorItem(5, "21 - 6 Uhr"));
+
+        DropDown<FaktorItem> trafficIntensityDropDown = screen.findNiftyControl("trafficIntensityDropDown", DropDown.class);
+        trafficIntensityDropDown.addItem(new FaktorItem(0, "Kein/Kaum Verkehr"));
+        trafficIntensityDropDown.addItem(new FaktorItem(1, "Normaler Verkehr"));
+        trafficIntensityDropDown.addItem(new FaktorItem(2, "Viel Verkehr/Stau"));
+
+        DropDown<FaktorItem> volumneDropDown = screen.findNiftyControl("volumneDropDown", DropDown.class);
+        volumneDropDown.addItem(new FaktorItem(0, "< 55 dB"));
+        volumneDropDown.addItem(new FaktorItem(1, "55 dB - 80 dB"));
+        volumneDropDown.addItem(new FaktorItem(2, "> 80 dB"));
+
+        DropDown<FaktorItem> weatherDropDown = screen.findNiftyControl("weatherDropDown", DropDown.class);
+        weatherDropDown.addItem(new FaktorItem(0, "Gutes Wetter"));
+        weatherDropDown.addItem(new FaktorItem(3, "Regen/Wind"));
+        weatherDropDown.addItem(new FaktorItem(6, "Nebel/GlÃ¤tte/Sturm"));
+    }
+
+    private class FaktorItem {
+        private int weight;
+        private String text;
+
+        public FaktorItem(int weight, String text) {
+            this.weight = weight;
+            this.text = text;
+        }
+
+        @Override
+        public String toString() {
+            return text;
+        }
+
+        public int getWeight() {
+            return weight;
+        }
+    }
+
+    @Override
+    public void onEndScreen() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void onStartScreen() {
+
+    }
+
 }
